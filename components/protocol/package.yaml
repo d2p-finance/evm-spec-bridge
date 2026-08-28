@@ -1,0 +1,44 @@
+name:        evm-spec-bridge-protocol
+version:     0.1.0.0
+synopsis:    Wire protocol types for the evm-spec-bridge oracle
+license:     BSD-3-Clause
+author:      JMSBPP
+maintainer:  juan.serranotmf@gmail.com
+copyright:   2026 JMSBPP
+
+# Mirrors the spec repo's flag set so both trees fail on the same things.
+ghc-options:
+- -Wall
+# -Wincomplete-patterns is implied by -Wall, but it is listed EXPLICITLY here
+# because PROTO-01 depends on it: a non-exhaustive case over SpecOutcome is
+# precisely the partial function that turns one outcome into another (by
+# dropping it). Naming the flag means a future -Wall trim cannot silently
+# remove the guarantee.
+- -Wincomplete-patterns
+- -Wcompat
+- -Widentities
+- -Wincomplete-record-updates
+- -Wincomplete-uni-patterns
+- -Wmissing-export-lists
+- -Wmissing-home-modules
+- -Wpartial-fields
+- -Wredundant-constraints
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+
+tests:
+  protocol-test:
+    main:        Main.hs
+    source-dirs: test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - evm-spec-bridge-protocol
+    - tasty
+    - tasty-hunit

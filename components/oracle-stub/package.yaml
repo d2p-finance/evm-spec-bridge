@@ -1,0 +1,29 @@
+name:        evm-spec-bridge-oracle-stub
+version:     0.1.0.0
+synopsis:    Phase 3 stub oracle serving fixed envelopes
+license:     BSD-3-Clause
+author:      JMSBPP
+maintainer:  juan.serranotmf@gmail.com
+copyright:   2026 JMSBPP
+
+ghc-options:
+- -Wall
+- -Wcompat
+- -Widentities
+- -Wincomplete-record-updates
+- -Wincomplete-uni-patterns
+- -Wmissing-export-lists
+- -Wmissing-home-modules
+- -Wpartial-fields
+- -Wredundant-constraints
+
+dependencies:
+- base >= 4.7 && < 5
+- optparse-applicative
+- evm-spec-bridge-registry
+- evm-spec-bridge-transport
+
+executables:
+  oracle-stub:
+    main: Main.hs
+    source-dirs: app
